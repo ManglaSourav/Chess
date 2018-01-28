@@ -16,14 +16,13 @@ import static com.chess.engine.board.Move.*;
 /**
  * Created by Sourav Mangla on Jan, 2018
  */
-public class Bishop extends Piece {
+public class Rook extends Piece{
 
-    private final static int[] CANDIDATE_MOVE_VECTOR_COORDINATE = {-9, -7, 7, 9};
+    private final static int[] CANDIDATE_MOVE_VECTOR_COORDINATE = {-8, -1, 1, 8};
 
-    Bishop(int piecePostion, Alliance pieceAlliance) {
+    Rook(int piecePostion, Alliance pieceAlliance) {
         super(piecePostion, pieceAlliance);
     }
-
     @Override
     public Collection<Move> calculateLegalMoves(Board board) {
 
@@ -57,7 +56,6 @@ public class Bishop extends Piece {
                        }
                        break; // if any piece occur in between any vector we can't go further for this vector
                    }
-
                }
            }
        }
@@ -66,11 +64,10 @@ public class Bishop extends Piece {
     }
     private static boolean isFirstColumnExclusion(final int currentPostion, final int candidateOffset){
 
-        return BoardUtils.FIRST_COLUMN[currentPostion] && (candidateOffset == -9 || candidateOffset == 7);
+        return BoardUtils.FIRST_COLUMN[currentPostion] && (candidateOffset == -1 );
     }
     private static boolean isEightColumnExclusion(final int currentPostion, final int candidateOffset){
 
-        return BoardUtils.EIGHTH_COLUMN[currentPostion] && (candidateOffset == -7 || candidateOffset == 9);
+        return BoardUtils.EIGHTH_COLUMN[currentPostion] && (candidateOffset == 1);
     }
-
 }

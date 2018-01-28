@@ -5,7 +5,18 @@ package com.chess.engine;
  */
 //thsi is useful for both player and for pieces
 public enum Alliance {
-    WHITE,
-    BLACK
+    WHITE{
+        @Override
+        public int getDirectio() {
+            return -1;
+        }
+    },
+    BLACK{
+        @Override
+        public int getDirectio() {
+            return 1;
+        }
+    };
+    public abstract int getDirectio();
 
 }
