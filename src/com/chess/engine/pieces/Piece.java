@@ -16,15 +16,22 @@ public  abstract  class Piece {
 
     protected final Alliance pieceAlliance     //piece either white or black color
 
+    protected final boolean isFirstMove;
+
     Piece(final int piecePostion,final Alliance pieceAlliance){
 
         this.piecePostion = piecePostion;
         this.pieceAlliance = pieceAlliance;
+        this.isFirstMove = false;
     }
 
     public Alliance getPieceAlliance() {
         return pieceAlliance;
     }
+    public boolean isFirstMove(){
+        return this.isFirstMove;
+    }
+
 
     // return a legal move of list for a piece like for king , queen , pawn, etc
 
