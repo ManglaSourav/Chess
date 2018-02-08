@@ -19,8 +19,8 @@ public class Pawn extends Piece{
 
     private final static int[] CANDIDATE_MOVE_COORDINATE = {8,16,7,9};
 
-    Pawn(final int piecePostion, final Alliance pieceAlliance) {
-        super(piecePostion, pieceAlliance);
+    public Pawn(final Alliance pieceAlliance, final int piecePostion) {
+        super(PieceType.PAWN, piecePostion, pieceAlliance);
     }
 
     @Override
@@ -41,7 +41,7 @@ public class Pawn extends Piece{
 
             }else if (currentCandidateOffset == 16 && this.isFirstMove() &&  // this handles the pawn jumps(2 cell jump )
                      (BoardUtils.SECOND_ROW[this.piecePostion] && this.getPieceAlliance().isBlack()) ||
-                     (BoardUtils.SEVENTH_ROW[this.piecePostion] && this.getPieceAlliance().isWhite()){
+                     (BoardUtils.SEVENTH_ROW[this.piecePostion] && this.getPieceAlliance().isWhite())) {
 
                 final int behindCandidateDestinationCoordinate = this.piecePostion + (this.pieceAlliance.getdirection() * 8);
                 if (!board.getTile(behindCandidateDestinationCoordinate).isTileOccupied() &&
@@ -56,7 +56,7 @@ public class Pawn extends Piece{
                     final Piece   pieceOnCandidate = board.getTile(candidateDestinationCoordinate).getPiece();
                     if (this.pieceAlliance != pieceOnCandidate.getPieceAlliance()){
                         //TODO more here
-                        legalMoves.add(new AttackMove(board, this, candidateDestinationCoordinate));
+                        legalMoves.add(new MajorMove(board, this, candidateDestinationCoordinate));
                     }
                 }
 
@@ -69,7 +69,7 @@ public class Pawn extends Piece{
                     final Piece   pieceOnCandidate = board.getTile(candidateDestinationCoordinate).getPiece();
                     if (this.pieceAlliance != pieceOnCandidate.getPieceAlliance()){
                         //TODO more here
-                        legalMoves.add(new AttackMove(board, this, candidateDestinationCoordinate));
+                        legalMoves.add(new MajorMove(board, this, candidateDestinationCoordinate));
                     }
                 }
             }
@@ -77,5 +77,9 @@ public class Pawn extends Piece{
         return ImmutableList.copyOf(legalMoves);
     }
 
+    @Override
+    public String toString(){
+        return PieceType.PAWN.toString();
 
+    }
 }

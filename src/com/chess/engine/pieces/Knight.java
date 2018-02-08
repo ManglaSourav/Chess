@@ -16,10 +16,10 @@ import java.util.List;
  * Created by Sourav Mangla on Jan, 2018
  */
 public class Knight extends Piece{
-    private final static int[] CANDIDATE_MOVE_COORDINATES = {-17,-15,10,-6,6,10,15,17}; // no. possible position offset for knight
+    private final static int[] CANDIDATE_MOVE_COORDINATES = {-17,-15,10,-6,6,10,15,17}; // no. of possible position offset for knight
 
-    public Knight(int piecePostion, Alliance pieceAlliance) {
-        super(piecePostion, pieceAlliance);
+    public Knight( Alliance pieceAlliance, int piecePostion) {
+        super(PieceType.KNIGHT, piecePostion, pieceAlliance);
     }
 
     @Override
@@ -59,24 +59,29 @@ public class Knight extends Piece{
         return ImmutableList.copyOf(legalMoves);
     }
 
+    @Override
+    public String toString(){
+        return PieceType.KNIGHT.toString();
+    }
+
     private static boolean isFirstColumnExclusion(final int currentPosition, final int candidateOffset){ //check unvalid(Exception) moves for first column of board
 
-        return BoardUtils.FIRST_COLUMN[currentPosition] && ((candidateOffset = -17) || (candidateOffset = -10) ||(candidateOffset = 6) ||(candidateOffset = 15))
+        return BoardUtils.FIRST_COLUMN[currentPosition] && ((candidateOffset == -17) || (candidateOffset == -10) ||(candidateOffset == 6) ||(candidateOffset == 15));
 
     }
     private static boolean isSecondColumnExclusion(final int currentPosition, final int candidateOffset){ //check unvalid moves for Second column of board
 
-        return BoardUtils.SECOND_COLUMN[currentPosition] && ((candidateOffset = -10) || (candidateOffset = 6))
+        return BoardUtils.SECOND_COLUMN[currentPosition] && ((candidateOffset == -10) || (candidateOffset == 6));
 
     }
     private static boolean isSeventhColumnExclusion(final int currentPosition, final int candidateOffset){ //check unvalid moves for Seventh column of board
 
-        return BoardUtils.SEVENTH_COLUMN[currentPosition] && ((candidateOffset = 10) || (candidateOffset = -6))
+        return BoardUtils.SEVENTH_COLUMN[currentPosition] && ((candidateOffset == 10) || (candidateOffset == -6));
 
     }
     private static boolean isEightHColumnExclusion(final int currentPosition, final int candidateOffset){ //check unvalid moves for Eighth column of board
 
-        return BoardUtils.EIGHTH_COLUMN[currentPosition] && ((candidateOffset = 17) || (candidateOffset = 10) ||(candidateOffset = -6) ||(candidateOffset = -15))
+        return BoardUtils.EIGHTH_COLUMN[currentPosition] && ((candidateOffset == 17) || (candidateOffset == 10) || (candidateOffset == -6) || (candidateOffset == -15));
 
     }
 

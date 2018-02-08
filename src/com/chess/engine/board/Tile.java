@@ -42,11 +42,18 @@ public abstract class Tile {  //64 tiles in chess  no class can instantiate this
         return piece != null ? new OccupiedTile(tileCoordinate,piece) : EMPTY_TILES_CACHE.get(tileCoordinate);
 
     }
+
+
     //this class define tile is not occupied by piece
     public static final class EmptyTile extends Tile{   //innner child class
 
         private EmptyTile(final int tileCoordinate) {
             super(tileCoordinate);
+        }
+
+        @Override
+        public String toString() {
+            return "-";
         }
 
         @Override
@@ -68,6 +75,12 @@ public abstract class Tile {  //64 tiles in chess  no class can instantiate this
         private OccupiedTile(int tileCoordinate,final Piece pieceOnTile) {
             super(tileCoordinate);
             this.pieceOnTile = pieceOnTile;
+        }
+
+        @Override
+        public String toString() {
+            return getPiece().getPieceAlliance().isBlack() ? getPiece().toString().toLowerCase() :
+                    getPiece().toString();
         }
 
         @Override
