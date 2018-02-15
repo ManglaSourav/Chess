@@ -100,6 +100,24 @@
               <folding>
                 <element signature="e#603#604#0" expanded="true" />
                 <element signature="e#640#641#0" expanded="true" />
+                <element signature="e#1011#1025#0" expanded="true" />
+                <element signature="e#1027#1044#0" expanded="true" />
+                <element signature="e#1046#1064#0" expanded="true" />
+                <element signature="e#1066#1079#0" expanded="true" />
+                <element signature="e#1384#1427#0" expanded="true" />
+                <element signature="e#1384#1427#0" expanded="true" />
+                <element signature="e#1436#1492#0" expanded="true" />
+                <element signature="e#1436#1492#0" expanded="true" />
+                <element signature="e#1501#1529#1" expanded="true" />
+                <element signature="e#1515#1528#0" expanded="true" />
+                <element signature="e#1545#1562#0" expanded="true" />
+                <element signature="e#1566#1589#0" expanded="true" />
+                <element signature="e#1609#1622#0" expanded="true" />
+                <element signature="e#1626#1645#0" expanded="true" />
+                <element signature="e#1665#1679#0" expanded="true" />
+                <element signature="e#1683#1703#0" expanded="true" />
+                <element signature="e#1723#1741#0" expanded="true" />
+                <element signature="e#1745#1769#0" expanded="true" />
                 <element signature="e#1818#1819#0" expanded="true" />
                 <element signature="e#1860#1861#0" expanded="true" />
                 <element signature="e#2177#2178#0" expanded="true" />
@@ -176,6 +194,7 @@
     </findStrings>
   </component>
   <component name="Git.Settings">
+    <option name="UPDATE_TYPE" value="MERGE" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GradleLocalSettings">
@@ -753,7 +772,14 @@
       <option name="project" value="LOCAL" />
       <updated>1518706388204</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="update">
+      <created>1518706434430</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1518706434430</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -770,7 +796,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="47" width="1920" height="1033" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32915717" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1273,6 +1298,24 @@
           <folding>
             <element signature="e#603#604#0" expanded="true" />
             <element signature="e#640#641#0" expanded="true" />
+            <element signature="e#1011#1025#0" expanded="true" />
+            <element signature="e#1027#1044#0" expanded="true" />
+            <element signature="e#1046#1064#0" expanded="true" />
+            <element signature="e#1066#1079#0" expanded="true" />
+            <element signature="e#1384#1427#0" expanded="true" />
+            <element signature="e#1384#1427#0" expanded="true" />
+            <element signature="e#1436#1492#0" expanded="true" />
+            <element signature="e#1436#1492#0" expanded="true" />
+            <element signature="e#1501#1529#1" expanded="true" />
+            <element signature="e#1515#1528#0" expanded="true" />
+            <element signature="e#1545#1562#0" expanded="true" />
+            <element signature="e#1566#1589#0" expanded="true" />
+            <element signature="e#1609#1622#0" expanded="true" />
+            <element signature="e#1626#1645#0" expanded="true" />
+            <element signature="e#1665#1679#0" expanded="true" />
+            <element signature="e#1683#1703#0" expanded="true" />
+            <element signature="e#1723#1741#0" expanded="true" />
+            <element signature="e#1745#1769#0" expanded="true" />
             <element signature="e#1818#1819#0" expanded="true" />
             <element signature="e#1860#1861#0" expanded="true" />
             <element signature="e#2177#2178#0" expanded="true" />
