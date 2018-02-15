@@ -1,1 +1,1 @@
-# Simple Chess game written in Java
+# Simple Chess game written in Java.

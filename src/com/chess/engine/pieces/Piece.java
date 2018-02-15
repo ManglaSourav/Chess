@@ -5,6 +5,7 @@ import com.chess.engine.board.Board;
 import com.chess.engine.board.Move;
 
 import java.util.Collection;
+import java.util.Objects;
 
 /**
  * Created by Sourav Mangla on 21-Aug-17.
@@ -20,6 +21,8 @@ public  abstract  class Piece {
 
     protected final boolean isFirstMove;
 
+    private final int cachedHashCode;
+
     public PieceType getPieceType() {
         return this.pieceType;
     }
@@ -29,11 +32,16 @@ public  abstract  class Piece {
         this.piecePostion = piecePostion;
         this.pieceAlliance = pieceAlliance;
         this.isFirstMove = false;
+        this.cachedHashCode = computeHashCode();
     }
+
+    private int computeHashCode() {
+        return Objects.hash(getPieceType(), getPiecePostion(), getPieceAlliance(), isFirstMove());
+    }
+
     public int getPiecePostion(){
         return this.piecePostion;
     }
-
     public Alliance getPieceAlliance() {
         return pieceAlliance;
     }
@@ -41,10 +49,28 @@ public  abstract  class Piece {
         return this.isFirstMove;
     }
 
+    @Override
+    public boolean equals(final Object other) {
+        if (this == other)
+            return true;
+        if (!(other instanceof Piece))
+            return false;
+        Piece piece = (Piece) other;
+        return getPiecePostion() == piece.getPiecePostion() &&
+                isFirstMove() == piece.isFirstMove() &&
+                getPieceType() == piece.getPieceType() &&
+                getPieceAlliance() == piece.getPieceAlliance();
+    }
+
+    @Override
+    public int hashCode() {
+        return this.cachedHashCode;
+    }
 
     // return a legal move of list for a piece like for king , queen , pawn, etc
-
     public abstract Collection<Move> calculateLegalMoves(final Board board);
+
+    public abstract Piece movePiece(Move move);
 
     public enum PieceType{
 
@@ -96,9 +122,6 @@ public  abstract  class Piece {
             return this.pieceName;
         }
 
-
         public abstract boolean isKing();
     }
-
-
 }

@@ -29,6 +29,10 @@ public abstract class Player {
 
     }
 
+    public Collection<Move> getLegalMoves() {
+        return legalMoves;
+    }
+
     private static Collection<Move> calculateAttacksOnTile(int piecePostion, Collection<Move> moves) {
 
         final List<Move> attackMoves = new ArrayList<>();
@@ -48,10 +52,10 @@ public abstract class Player {
                 return ( King )piece;
             }
         }
-        throw new RuntimeException("should not reach here! Not a valid Board");
+        throw new RuntimeException("should not reach here! Not a valid Board");// if king is not found  thats is not a valid chess board
     }
 
-    public boolean isLegalMove(final Move move){
+    public boolean isMoveLegal(final Move move){
 
         return this.legalMoves.contains(move);
     }
@@ -61,22 +65,51 @@ public abstract class Player {
     }
 
     public boolean isInCheckMate(){
+        return this.isInCheck && !hasEscapeMoves();
+    }
+
+    protected boolean hasEscapeMoves(){
+        for (final Move move : this.legalMoves){
+            final MoveTransition transition = makeMove(move);
+            if(transition.getMoveStatus().isDone()){
+                return true;
+            }
+        }
         return false;
     }
 
     public boolean isInStaleMate(){
-        return false;
+        return !this.isInCheck && !hasEscapeMoves();
     }
 
     public boolean isCastled(){
         return false;
     }
 
-    public MoveTransition makeMove(final Move move){}
+    public MoveTransition makeMove(final Move move){
+
+        if(!isMoveLegal(move)){
+            return new MoveTransition(this.board, move, MoveStatus.ILLEGAL_MOVE);
+        }
+
+        final Board transitionBoard = move.execute();
+
+        final Collection<Move> kingAttacks = Player.calculateAttacksOnTile(transitionBoard.currentPlayer().getOpponent().getPlayerKing().getPiecePostion(),
+                                                                            transitionBoard.currentPlayer().getLegalMoves())
+
+        if(!kingAttacks.isEmpty()){
+            return  new MoveTransition(this.board, move, MoveStatus.LEAVE_PLAYER_IN_CHECK);
+        }
+        return new MoveTransition(this.board, move, MoveStatus.DONE);;
+    }
 
 
 
     public abstract Collection<Piece>  getActivePieces();
     public abstract Alliance getAlliance();
     public abstract Player getOpponent();
+
+    public King getPlayerKing() {
+        return this.playerKing;
+    }
 }
