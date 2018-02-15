@@ -1,24 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4bcf992b-6479-49e4-a188-870659abaee3" name="Default" comment="update">
+    <list default="true" id="4bcf992b-6479-49e4-a188-870659abaee3" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change beforePath="$PROJECT_DIR$/src/com/chess/engine/Alliance.java" afterPath="$PROJECT_DIR$/src/com/chess/engine/Alliance.java" />
-      <change beforePath="$PROJECT_DIR$/src/com/chess/engine/board/Board.java" afterPath="$PROJECT_DIR$/src/com/chess/engine/board/Board.java" />
-      <change beforePath="$PROJECT_DIR$/src/com/chess/engine/board/Move.java" afterPath="$PROJECT_DIR$/src/com/chess/engine/board/Move.java" />
-      <change beforePath="$PROJECT_DIR$/src/com/chess/engine/pieces/Bishop.java" afterPath="$PROJECT_DIR$/src/com/chess/engine/pieces/Bishop.java" />
-      <change beforePath="$PROJECT_DIR$/src/com/chess/engine/pieces/King.java" afterPath="$PROJECT_DIR$/src/com/chess/engine/pieces/King.java" />
-      <change beforePath="$PROJECT_DIR$/src/com/chess/engine/pieces/Knight.java" afterPath="$PROJECT_DIR$/src/com/chess/engine/pieces/Knight.java" />
-      <change beforePath="$PROJECT_DIR$/src/com/chess/engine/pieces/Pawn.java" afterPath="$PROJECT_DIR$/src/com/chess/engine/pieces/Pawn.java" />
-      <change beforePath="$PROJECT_DIR$/src/com/chess/engine/pieces/Piece.java" afterPath="$PROJECT_DIR$/src/com/chess/engine/pieces/Piece.java" />
-      <change beforePath="$PROJECT_DIR$/src/com/chess/engine/pieces/Queen.java" afterPath="$PROJECT_DIR$/src/com/chess/engine/pieces/Queen.java" />
-      <change beforePath="$PROJECT_DIR$/src/com/chess/engine/pieces/Rook.java" afterPath="$PROJECT_DIR$/src/com/chess/engine/pieces/Rook.java" />
-      <change beforePath="$PROJECT_DIR$/src/com/chess/engine/player/BlackPlayer.java" afterPath="$PROJECT_DIR$/src/com/chess/engine/player/BlackPlayer.java" />
-      <change beforePath="$PROJECT_DIR$/src/com/chess/engine/player/MoveStatus.java" afterPath="$PROJECT_DIR$/src/com/chess/engine/player/MoveStatus.java" />
-      <change beforePath="$PROJECT_DIR$/src/com/chess/engine/player/MoveTransition.java" afterPath="$PROJECT_DIR$/src/com/chess/engine/player/MoveTransition.java" />
-      <change beforePath="$PROJECT_DIR$/src/com/chess/engine/player/Player.java" afterPath="$PROJECT_DIR$/src/com/chess/engine/player/Player.java" />
-      <change beforePath="$PROJECT_DIR$/src/com/chess/engine/player/WhitePlayer.java" afterPath="$PROJECT_DIR$/src/com/chess/engine/player/WhitePlayer.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -762,6 +746,14 @@
       <workItem from="1503508363306" duration="491000" />
       <workItem from="1503662894569" duration="47000" />
     </task>
+    <task id="LOCAL-00001" summary="update">
+      <created>1518706388204</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1518706388204</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
