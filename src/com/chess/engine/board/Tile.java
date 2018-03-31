@@ -43,6 +43,10 @@ public abstract class Tile {  //64 tiles in chess  no class can instantiate this
 
     }
 
+    public int getTileCoordinate() {
+        return tileCoordinate;
+    }
+
 
     //this class define tile is not occupied by piece
     public static final class EmptyTile extends Tile{   //innner child class

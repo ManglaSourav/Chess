@@ -6,6 +6,7 @@ import com.chess.engine.board.Move;
 import com.chess.engine.pieces.King;
 import com.chess.engine.pieces.Piece;
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Iterables;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -21,10 +22,12 @@ public abstract class Player {
     protected final Collection<Move> legalMoves;
     private final boolean isInCheck;
 
-    public Player(Board board, Collection<Move> legalMoves, Collection<Move> opponentMoves) {
+    public Player(Board board,
+                  Collection<Move> legalMoves,
+                  Collection<Move> opponentMoves) {
         this.board = board;
         this.playerKing = establishKing();
-        this.legalMoves = legalMoves;
+        this.legalMoves =ImmutableList.copyOf(Iterables.concat(legalMoves, calculateKingCastles(legalMoves, opponentMoves)));
         this.isInCheck = !Player.calculateAttacksOnTile(this.playerKing.getPiecePostion(), opponentMoves).isEmpty();
 
     }
@@ -33,7 +36,7 @@ public abstract class Player {
         return legalMoves;
     }
 
-    private static Collection<Move> calculateAttacksOnTile(int piecePostion, Collection<Move> moves) {
+    protected static Collection<Move> calculateAttacksOnTile(int piecePostion, Collection<Move> moves) {
 
         final List<Move> attackMoves = new ArrayList<>();
 
@@ -95,12 +98,12 @@ public abstract class Player {
         final Board transitionBoard = move.execute();
 
         final Collection<Move> kingAttacks = Player.calculateAttacksOnTile(transitionBoard.currentPlayer().getOpponent().getPlayerKing().getPiecePostion(),
-                                                                            transitionBoard.currentPlayer().getLegalMoves())
+                                                                            transitionBoard.currentPlayer().getLegalMoves());
 
         if(!kingAttacks.isEmpty()){
             return  new MoveTransition(this.board, move, MoveStatus.LEAVE_PLAYER_IN_CHECK);
         }
-        return new MoveTransition(this.board, move, MoveStatus.DONE);;
+        return new MoveTransition(this.board, move, MoveStatus.DONE);
     }
 
 
@@ -108,8 +111,9 @@ public abstract class Player {
     public abstract Collection<Piece>  getActivePieces();
     public abstract Alliance getAlliance();
     public abstract Player getOpponent();
-
     public King getPlayerKing() {
         return this.playerKing;
     }
+    protected abstract Collection<Move> calculateKingCastles(Collection<Move> playerLegals, Collection<Move> opponentLegals);
+
 }
