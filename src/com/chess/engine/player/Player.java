@@ -28,7 +28,7 @@ public abstract class Player {
         this.board = board;
         this.playerKing = establishKing();
         this.legalMoves =ImmutableList.copyOf(Iterables.concat(legalMoves, calculateKingCastles(legalMoves, opponentMoves)));
-        this.isInCheck = !Player.calculateAttacksOnTile(this.playerKing.getPiecePostion(), opponentMoves).isEmpty();
+        this.isInCheck = !Player.calculateAttacksOnTile(this.playerKing.getPiecePosition(), opponentMoves).isEmpty();
 
     }
 
@@ -97,7 +97,7 @@ public abstract class Player {
 
         final Board transitionBoard = move.execute();
 
-        final Collection<Move> kingAttacks = Player.calculateAttacksOnTile(transitionBoard.currentPlayer().getOpponent().getPlayerKing().getPiecePostion(),
+        final Collection<Move> kingAttacks = Player.calculateAttacksOnTile(transitionBoard.currentPlayer().getOpponent().getPlayerKing().getPiecePosition(),
                                                                             transitionBoard.currentPlayer().getLegalMoves());
 
         if(!kingAttacks.isEmpty()){

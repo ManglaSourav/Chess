@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import static com.chess.engine.board.Move.*;
+
 /**
  * Created by Sourav Mangla on Jan, 2018
  */
@@ -20,7 +22,11 @@ public class King extends Piece{
     private final static int[] CANDIATE_MOVE_COORDINATE = {-9, -8, -7, -1, 1, 7, 8, 9};
 
     public King(final  Alliance pieceAlliance, final int piecePostion) {
-        super(PieceType.KING, piecePostion, pieceAlliance);
+        super(PieceType.KING, piecePostion, pieceAlliance, true);
+    }
+
+    public King(final  Alliance pieceAlliance, final int piecePostion, final boolean isFirstMove) {
+        super(PieceType.KING, piecePostion, pieceAlliance, isFirstMove);
     }
 
     @Override
@@ -47,7 +53,7 @@ public class King extends Piece{
                     final Piece pieceAtDestination = candidateDestinationTile.getPiece();
                     final Alliance pieceAlliance = pieceAtDestination.getPieceAlliance();
                     if (this.pieceAlliance != pieceAlliance){ // if our piece has different color than oppnent, its a legal move
-                        legalMoves.add(new AttackMove(board,this,candidateDestinationCoordinate,pieceAtDestination));//attacking move
+                        legalMoves.add(new MajorAttackMove(board,this,candidateDestinationCoordinate,pieceAtDestination));//attacking move
                     }
                 }
 

@@ -21,7 +21,12 @@ public class Bishop extends Piece {
     private final static int[] CANDIDATE_MOVE_VECTOR_COORDINATE = {-9, -7, 7, 9};
 
     public Bishop(final Alliance pieceAlliance, final int piecePostion ) {
-        super(PieceType.BISHOP, piecePostion, pieceAlliance);
+        super(PieceType.BISHOP, piecePostion, pieceAlliance, true);
+    }
+
+
+    public Bishop(final Alliance pieceAlliance, final int piecePostion ,final boolean isFirstMove) {
+        super(PieceType.BISHOP, piecePostion, pieceAlliance, isFirstMove);
     }
 
     @Override
@@ -53,7 +58,7 @@ public class Bishop extends Piece {
                        final Piece pieceAtDestination = candidateDestinationTile.getPiece();
                        final Alliance pieceAlliance = pieceAtDestination.getPieceAlliance();
                        if (this.pieceAlliance != pieceAlliance) { // if our piece has different color than oppnent, its a legal move
-                           legalMoves.add(new AttackMove(board, this, candidateDestinationCoordinate, pieceAtDestination));//attacking move
+                           legalMoves.add(new MajorAttackMove(board, this, candidateDestinationCoordinate, pieceAtDestination));//attacking move
                        }
                        break; // if any piece occur in between any vector we can't go further for this vector
                    }

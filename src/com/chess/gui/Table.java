@@ -33,7 +33,10 @@ public class Table {
 
     private final JFrame gameFrame;
     private final BoardPanel boardPanel;
+    private final GameHistoryPanel gameHistoryPanel;
+    private final TakenPiecesPanel takenPiecesPanel;
     private Board chessBoard;
+    private final MoveLog moveLog;
 
     private Tile sourceTile;
     private Tile destinationTile;
@@ -58,13 +61,19 @@ public class Table {
         final JMenuBar tableMenuBar = createTableMenuBar();
         this.gameFrame.setJMenuBar(tableMenuBar);
         this.gameFrame.setSize(OUTER_FRAME_DIMENSION);
+        this.gameHistoryPanel = new GameHistoryPanel();
+        this.takenPiecesPanel = new TakenPiecesPanel();
         this.chessBoard = Board.createStandardBoard();
 
         this.boardPanel = new BoardPanel();
+        moveLog = new MoveLog();
         this.boardDirection = BoardDirection.NORMAL;//normal orientation
         this.highLightLegalMoves = false;
+        this.gameFrame.add(takenPiecesPanel, BorderLayout.WEST);
         this.gameFrame.add(this.boardPanel, BorderLayout.CENTER);
+        this.gameFrame.add(gameHistoryPanel, BorderLayout.EAST);
         this.gameFrame.setVisible(true);
+
 
     }
 
@@ -180,6 +189,39 @@ public class Table {
         }
     }
 
+    public static  class MoveLog{ //keep track of moves which are executed
+        private final List<Move> moves;
+
+        MoveLog() {
+            this.moves = new ArrayList<>();
+        }
+
+        public List<Move> getMoves() {
+            return this.moves;
+        }
+
+        void addMove(final Move move) {
+            this.moves.add(move);
+        }
+
+        public int size() {
+            return this.moves.size();
+        }
+
+        void clear() {
+            this.moves.clear();
+        }
+
+        Move removeMove(final int index) {
+            return this.moves.remove(index);
+        }
+
+        boolean removeMove(final Move move) {
+            return this.moves.remove(move);
+        }
+
+    }
+
 
     private class TilePanel extends JPanel{ //it maps to a tile in chess game and it is a visual component for tile
         private  final int tileId;
@@ -213,15 +255,18 @@ public class Table {
                             final MoveTransition transition = chessBoard.currentPlayer().makeMove(move);
                             if(transition.getMoveStatus().isDone()){
                                 chessBoard = transition.getTransitionBoard();
-                                //TODO add the move that was made to the move log
+                                moveLog.addMove(move);
                             }
                             sourceTile = null;
                             destinationTile = null;
                             humanMovedPiece = null;
                         }
                         SwingUtilities.invokeLater(new Runnable() { // GUI update
+
                             @Override
                             public void run() {
+                                gameHistoryPanel.redo(chessBoard, moveLog);
+                                takenPiecesPanel.redo(moveLog);
                                 boardPanel.drawBoard(chessBoard); //redraw the board from given board
                             }
                         });

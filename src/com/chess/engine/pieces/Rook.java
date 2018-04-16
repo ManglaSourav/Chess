@@ -57,7 +57,7 @@ public class Rook extends Piece{
                        final Piece pieceAtDestination = candidateDestinationTile.getPiece();
                        final Alliance pieceAlliance = pieceAtDestination.getPieceAlliance();
                        if (this.pieceAlliance != pieceAlliance) { // if our piece has different color than oppnent, its a legal move
-                           legalMoves.add(new AttackMove(board, this, candidateDestinationCoordinate, pieceAtDestination));//attacking move
+                           legalMoves.add(new MajorAttackMove(board, this, candidateDestinationCoordinate, pieceAtDestination));//attacking move
                        }
                        break; // if any piece occur in between any vector we can't go further for this vector
                    }

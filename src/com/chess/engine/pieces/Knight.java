@@ -18,8 +18,12 @@ import java.util.List;
 public class Knight extends Piece{
     private final static int[] CANDIDATE_MOVE_COORDINATES = {-17,-15,10,-6,6,10,15,17}; // no. of possible position offset for knight
 
-    public Knight( Alliance pieceAlliance, int piecePostion) {
-        super(PieceType.KNIGHT, piecePostion, pieceAlliance);
+    public Knight(final Alliance pieceAlliance,final int piecePostion) {
+        super(PieceType.KNIGHT, piecePostion, pieceAlliance, true);
+    }
+
+    public Knight(final Alliance pieceAlliance,final int piecePostion, final boolean isFirstMove) {
+        super(PieceType.KNIGHT, piecePostion, pieceAlliance, isFirstMove);
     }
 
     @Override
@@ -49,7 +53,7 @@ public class Knight extends Piece{
                     final Piece pieceAtDestination = candidateDestinationTile.getPiece();
                     final Alliance pieceAlliance = pieceAtDestination.getPieceAlliance();
                     if (this.pieceAlliance != pieceAlliance){ // if our piece has different color than oppnent, its a legal move
-                        legalMoves.add(new AttackMove(board,this,candidateDestinationCoordinate,pieceAtDestination));//attacking move
+                        legalMoves.add(new MajorAttackMove(board,this,candidateDestinationCoordinate,pieceAtDestination));//attacking move
                     }
                 }
             }

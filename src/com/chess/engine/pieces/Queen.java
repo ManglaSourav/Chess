@@ -4,6 +4,7 @@ import com.chess.engine.Alliance;
 import com.chess.engine.board.Board;
 import com.chess.engine.board.BoardUtils;
 import com.chess.engine.board.Move;
+import com.chess.engine.board.Move.MajorAttackMove;
 import com.chess.engine.board.Tile;
 import com.google.common.collect.ImmutableList;
 
@@ -18,8 +19,13 @@ public class Queen extends  Piece{
 
     private final static int[] CANDIDATE_MOVE_VECTOR_COORDINATE = {-9, -8 -7, -1, 1, 7, 8, 9};
 
-    public Queen(Alliance pieceAlliance,int piecePostion) {
-        super(PieceType.QUEEN, piecePostion, pieceAlliance);
+    public Queen(final Alliance pieceAlliance, final int piecePostion) {
+        super(PieceType.QUEEN, piecePostion, pieceAlliance, true);
+    }
+
+
+    public Queen(final Alliance pieceAlliance, final int piecePostion, final boolean isFirstMove) {
+        super(PieceType.QUEEN, piecePostion, pieceAlliance, isFirstMove);
     }
 
     @Override
@@ -51,7 +57,7 @@ public class Queen extends  Piece{
                         final Piece pieceAtDestination = candidateDestinationTile.getPiece();
                         final Alliance pieceAlliance = pieceAtDestination.getPieceAlliance();
                         if (this.pieceAlliance != pieceAlliance) { // if our piece has different color than oppnent, its a legal move
-                            legalMoves.add(new Move.AttackMove(board, this, candidateDestinationCoordinate, pieceAtDestination));//attacking move
+                            legalMoves.add(new MajorAttackMove(board, this, candidateDestinationCoordinate, pieceAtDestination));//attacking move
                         }
                         break; // if any piece occur in between any vector we can't go further for this vector
                     }
